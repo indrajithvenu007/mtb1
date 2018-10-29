@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	{% block head %}
+	<title>order list</title>
+	{% endblock %}
+</head>
+<body>
+	{% block body %}
+	<div class='table-responsive'>
+	<h3>Booked list</h3><br>
+	<table class="table table-hover table-responsive">
+		<tr>
+		<th>Name</th>
+		<th>Movie</th>
+		<th>Screen</th>
+		<th>Date</th>
+		<th>Time</th>
+		<th>Ticket class</th>
+		<th>Seats Booked</th>
+		<th>Total Bill Amount</th>
+		<th>Booked date</th>
+	</tr>
+	{% for i in o_list %}
+		{% ifequal request.user.username i.user_data %}
+		<tr>
+			<td>{{i.user_data}}</td>
+			<td>{{i.movie}}</td>
+			<td>{{i.screen}}</td>
+			<td>{{i.date}}</td>
+			<td>{{i.show_time}}</td>
+			<td>{{i.ticket_class}}</td>
+			<td>{{i.no_seats}}</td>
+			<td>{{i.total_amt}}</td>
+			<td>{{i.create_date}}</td>
+			
+		</tr>
+		{% endifequal %}
+	
+	{% endfor %}
+	</table>
+		</div>
+	{% endblock %}
+</body>
+</html>

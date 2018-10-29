@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block head %}
+
+{% endblock %}
+{% block body %}
+			<div class='container'>
+				<div id="myDIV">
+				<div style="border-style: dotted;width: 500px;text-align: center; background-image: radial-gradient(circle, #e0e1e3, #d3d7d9, #c6cdcc, #bcc2be, #b5b7b0);margin-top: 25px;float: right;">
+					<div>
+	  					<h3>Click Proceed to confirm tickets..</h3>
+	  					<h4>Movie  : {{ movie }}</h4>
+	  					<h4>screen : {{ screen }}</h4>
+	  					<h4>date n time : {{ date }} | {{time}}</h4>
+	  					<h4>Ticket Class | Number of seats : {{ ticket_class }} | {{seats}}</h4>
+	  					<h4>---------------------------------------------------------------</h4>
+	  					<h4>Payable amount  : {{ tot }} /-</h4>
+	  					<h4></h4>
+	  					<a href="{% url 'pay_page' %}"><button type="button" class="btn btn-danger" >Proceed to pay</button></a>
+			  		</div>
+
+					</div>
+				
+					<div >
+						<h3>Choose the Ticket Class and number of seats..</h3>
+						<h5>Price Per Silver Ticket : {{silver_price}}</h5>
+						<h5>Price Per Gold Ticket : {{gold_price}}</h5>
+						<h5>Price Per Platinum Ticket : {{platinum_price}}</h5>
+					</div>
+					<form method="post" action="." enctype="multipart/form-data">
+						{% csrf_token %}
+							<h4>Select Ticket Class  : {{ form.t_class }}</h4>
+							<h4>Enter Number of Seats:{{ form.selected_seat }}</h4>
+							<button type='submit' >Confirm</button>
+			
+					</form>
+	  				</div>
+
+
+			</div>
+
+
+	{% endblock %}

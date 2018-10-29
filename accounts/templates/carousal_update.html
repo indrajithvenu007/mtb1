@@ -1,0 +1,17 @@
+{% extends 'alog_lst_view.html' %}
+
+	{% block head %}
+	<title>carousal_update</title>
+	{% endblock %}
+
+	{% block body %}
+	<div class='container'>
+	<h3>You can update the Carousal Details here.</h3>
+	<form method='post' action='.' enctype="multipart/form-data">
+	{% csrf_token %}
+    {{ form.as_p }}
+
+	<input type='submit' value='update'>
+		
+	</form>
+	{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'alog_lst_view.html' %}
+<!DOCTYPE html>
+<html>
+<head>
+	{% block head %}
+	<title>movie_delete</title>
+	{% endblock %}
+</head>
+<body>
+	{% block body %}
+
+	<div class='container'>
+	<form method='post' action='.' enctype="multipart/form-data">
+	<h3>Are you sure , You want to Delete Movie?</h3>
+
+	{% csrf_token %}
+
+	<input type='submit' value='Yes'/><a href="/sclview">cancel</a>
+		
+	</form>
+
+	{% endblock %}
+	</div>
+</body>
+</html>

@@ -1,0 +1,25 @@
+{% extends 'alog_lst_view.html' %}
+<!DOCTYPE html>
+<html>
+<head>
+	{% block head %}
+	<title>show delete</title>
+	{% endblock %}
+</head>
+<body>
+	{% block body %}
+
+	<div class='container'>
+	<form method='post' action='.' enctype="multipart/form-data">
+	<h3>Are you sure , You want to Delete show?</h3>
+
+	{% csrf_token %}
+
+	<input type='submit' value='Yes'/><a href="/slview/">cancel</a>
+		
+	</form>
+
+	{% endblock %}
+	</div>
+</body>
+</html>

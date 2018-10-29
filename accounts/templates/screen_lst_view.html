@@ -1,0 +1,49 @@
+{% extends 'alog_lst_view.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	{% block head %}
+	<title>screen list</title>
+	{% endblock %}
+</head>
+<body>
+	{% block body %}
+	<div >
+	<h3>Screen list for admin with edit option.</h3><br>
+	<table class="table table-hover">
+		<tr>
+			<th>Screen Name</th>
+			<th>Silverseats nos</th>
+			<th>Goldseats nos</th>
+			<th>platinumseats nos</th>
+			<th>per silverseat price</th>
+			<th>per goldseat price</th>
+			<th>per pltnmseat price</th>
+			<th>Screen status</th>
+			<th>Created On</th>
+			<th>Delete Screen</th>
+			<th>Edit</th>
+		</tr>
+	{% for i in sc_list %}
+		<tr>
+			<td>{{i.sc_name}}</td>
+			<td>{{i.silver_seats}}</td>
+			<td>{{i.gold_seat}}</td>
+			<td>{{i.platinum_seats}}</td>
+			<td>{{i.silver_price}}</td>
+			<td>{{i.gold_price}}</td>
+			<td>{{i.platinum_price}}</td>
+			<td>{{i.sc_status}}</td>
+			<td>{{i.create_date}}</td>
+			<td><a href="{% url 'sc_del_view' i.id %}"><button type="button" class="btn btn-danger btn-rounded">Delete</button></a></td>
+			<td><a href="{% url 'sc_up_view' i.id %}">	<button type="button" class="btn btn-info">Edit</button>
+</a></td>
+		</tr>
+	
+	{% endfor %}
+	</table>
+		</div>
+	{% endblock %}
+</body>
+</html>

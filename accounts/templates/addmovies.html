@@ -1,0 +1,21 @@
+{% extends 'alog_lst_view.html' %}
+{% load static from staticfiles %}
+
+	{% block head %}
+	<title>movie register</title>
+	{% endblock %}
+
+	{% block body %}
+	
+	<div class="container h-100 d-flex justify-content-center">
+		<h3>Movie Register</h3>
+		<h5>enter the movie details in the respective fields</h5><br><br>
+	<form method="post" action="." enctype="multipart/form-data">
+		{% csrf_token %}
+		{{ form.as_p }}
+
+		<button>submit</button>
+	
+	</form>
+	</div>
+	{% endblock %}

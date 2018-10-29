@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block head %}
+
+{% endblock %}
+{% block body %}
+			<div class='container'>
+ 				
+  				<div>
+  					<h3>Click Proceed to confirm tickets..</h3>
+  					<h4>Movie  : {{ movie }}</h4>
+  					<h4>screen : {{ screen }}</h4>
+  					<h4>date n time : {{ date }} | {{time}}</h4>
+  					<h4>Ticket Class | Number of seats : {{ ticket_class }} | {{seats}}</h4>
+  					<h4>------------------------------------------------------------------</h4>
+  					<h4>Payable amount  : {{ tot }} /-</h4>
+			  	</div>
+
+			</div>
+
+
+	{% endblock %}

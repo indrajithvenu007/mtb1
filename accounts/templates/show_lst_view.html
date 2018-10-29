@@ -1,0 +1,38 @@
+{% extends 'alog_lst_view.html' %}
+{% load static %}
+
+	{% block head %}
+	<title>show list</title>
+	{% endblock %}
+
+	{% block body %}
+	<div >
+	<h3>Show list for admin with edit option.</h3><br>
+	<table class="table table-hover">
+		<tr>
+			<th>Show Date</th>
+			<th>Show Time</th>
+			<th>Movie</th>
+			<th>Screen</th>
+			<th>Show Status</th>
+			<th>Created On</th>
+			<th>Delete Show</th>
+			<th>Edit</th>
+		</tr>
+	{% for i in s_list %}
+		<tr>
+			<td>{{i.s_date}}</td>
+			<td>{{i.s_time}}</td>
+			<td>{{i.movie}}</td> 
+			<td>{{i.screen}}</td> 
+			<td>{{i.s_status}}</td>
+			<td>{{i.create_date}}</td>
+			<td><a href="{% url 's_del_view' i.id %}"><button type="button" class="btn btn-danger btn-rounded">Delete</button></a></td>
+			<td><a href="{% url 's_up_view' i.id %}">	<button type="button" class="btn btn-info">Edit</button>
+</a></td>
+		</tr>
+	
+	{% endfor %}
+	</table>
+		</div>
+	{% endblock %}

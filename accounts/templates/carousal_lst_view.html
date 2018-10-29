@@ -1,0 +1,34 @@
+{% extends 'alog_lst_view.html' %}
+{% load static %}
+
+	{% block head %}
+	<title>Carousal list</title>
+	{% endblock %}
+
+	{% block body %}
+	<div class='table-responsive'>
+	<h3>Carousal list for admin with edit option.</h3><br>
+	<table class="table table-hover table-responsive">
+		<tr>
+		<th>Description</th>
+		<th>image</th>
+		<th>status</th>
+		<th>Added date</th>
+		<th>Delete Movie</th>
+		<th>Edit</th>
+	</tr>
+	{% for i in c_list %}
+		<tr>
+			<td>{{i.img_description}}</td>
+			<td><img src='{{i.img_carousal.url}}' height="100px" width="250"></td>
+			<td>{{i.sc_status}}</td>
+			<td>{{i.create_date}}</td>
+			<td><a href="{% url 'm_del_view' i.id %}"><button type="button" class="btn btn-danger btn-rounded">Delete</button></a></td>
+			<td><a href="{% url 'c_up_view' i.id %}">	<button type="button" class="btn btn-info">Edit</button>
+</a></td>
+		</tr>
+	
+	{% endfor %}
+	</table>
+		</div>
+	{% endblock %}

@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% block head %}
+<script src='https://www.google.com/recaptcha/api.js'></script>
+<style type="text/css">
+.login-page {
+  width: 360px;
+  padding: 8% 0 0;
+  margin: auto;
+}
+  @import url(https://fonts.googleapis.com/css?family=Roboto:300);
+
+.form {
+  position: relative;
+  z-index: 1;
+  background: #FFFFFF;
+  max-width: 360px;
+  margin: 0 auto 100px;
+  padding: 45px;
+  text-align: center;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+</style>
+  
+  
+  
+{% endblock %}
+
+{% block body %}
+
+<div class="container">
+	<div class="login-page">
+  		<div class="form">
+    		<form class="register-form" method="post" onsubmit='return get_action();'>
+    			{% csrf_token %}
+    			{{ form.as_p }}
+
+          <script src='https://www.google.com/recaptcha/api.js'></script>
+<div class="g-recaptcha" data-sitekey="6LcOFXcUAAAAAJLnMfErh-4zECuSyJG6LQ3X7m-V" data-callback='verifyCaptcha'>
+</div>
+<div id='g-recaptcha-error'></div>
+              <button type="submit" class="btn btn-primary">Login</button> 
+              <h6>New User?</h6><a href="{% url 'user_add' %}"><button>Signup</button></a>
+
+        </form>
+ 		</div> 
+ 	</div>
+</div> 
+
+<script>
+function get_action(form)
+{
+    var v = grecaptcha.getResponse();
+    if(v.length == 0)
+    {
+        document.getElementById('g-recaptcha-error').innerHTML="You can't leave Captcha Code empty";
+        return false;
+    }
+    else
+    {
+        document.getElementById('g-recaptcha-error').innerHTML="Captcha completed";
+        return true;
+    }
+}
+function verifyCaptcha(){
+    document.getElementById('g-recaptcha-error').innerHTML = '';
+}
+</script>
+
+  
+{% endblock %}
+
+ 

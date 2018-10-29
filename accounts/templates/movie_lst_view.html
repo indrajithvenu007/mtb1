@@ -1,0 +1,49 @@
+{% extends 'alog_lst_view.html' %}
+{% load static %}
+
+	{% block head %}
+	<title>movie list</title>
+	{% endblock %}
+
+	{% block body %}
+	<div class='table-responsive'>
+	<h3>Movie list for admin with edit option.</h3><br>
+	<table class="table table-hover table-responsive">
+		<tr>
+		<th>Title</th>
+		<th>Language</th>
+		<th>Rating</th>
+		<th>Genre</th>
+		<th>Duration(hrs.)</th>
+		<th>Poster</th>
+		<th>Cover</th>
+		<th>Trailer</th>
+		<th>Status</th>
+		<th>Added date</th>
+		<th>Delete Movie</th>
+		<th>Edit</th>
+	</tr>
+	{% for i in m_list %}
+		<tr>
+			<td>{{i.m_name}}</td>
+			<td>{{i.m_language}}</td>
+			<td>{{i.m_rating}}</td>
+			<td>{{i.m_genre}}</td>
+			<td>{{i.m_length}}</td>
+			<td><img src='{{i.m_poster.url}}' height="100px" width="100"></td>
+			<td><img src='{{i.m_poster2.url}}' height="100px" width="150"></td>
+			<td><video name='demo' controls width='200px' height='100px'>
+				<source src="{{i.m_trailer.url}}" type="video/mp4"></source>
+			</video></td>
+			<td>{{i.m_status}}</td>
+			<td>{{i.create_date}}</td>
+			<td><a href="{% url 'm_del_view' i.id %}"><button type="button" class="btn btn-danger btn-rounded">Delete</button></a></td>
+			<td><a href="{% url 'm_up_view' i.id %}">	<button type="button" class="btn btn-info">Edit</button>
+</a></td>
+		</tr>
+	
+	{% endfor %}
+	</table>
+		</div>
+	{% endblock %}
+>

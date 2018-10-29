@@ -1,0 +1,79 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Admin login page</title>
+
+		{% block head %}
+	{% endblock %}
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+
+</head>
+<body>
+{% if request.user.is_superuser %}
+	<div class="container">
+  		<ul class="nav nav-tabs nav-justified">
+
+        <li><a href="{% url 'm_lst_hme'  %}">Home</a></li>
+    		<li class="dropdown">
+      			<a class="dropdown-toggle" data-toggle="dropdown" href="#">Movies <span class="caret"></span></a>
+      			<ul class="dropdown-menu">
+      				<li><a href="{% url 'movies_add'  %}">Add Movie</a></li>
+      				<li ><a href="{% url 'm_lstview'  %}">Movies List</a></li>
+      			</ul>
+    		</li>
+
+        <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Screens <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="{% url 'sc_add'  %}">Add Screens</a></li>
+              <li ><a href="{% url 'sc_lstview'  %}">Screen List</a></li>
+            </ul>
+        </li>
+    
+
+        <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Shows <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="{% url 's_add'  %}">Add Shows</a></li>
+              <li ><a href="{% url 's_lstview'  %}">Show List</a></li>
+            </ul>
+        </li>
+        
+        <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Users <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="#">Users</a></li>
+              <li ><a href="{% url 'u_lstview'  %}">Users List</a></li>
+            </ul>
+        </li>
+
+    		<li><a href="{% url 'o_lstview'  %}">Bookings</a></li>
+        <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Others <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="{% url 'carousal_add'  %}">Home Carousal add</a></li>
+              <li ><a href="{% url 'c_lstview'  %}">Home Carousal List</a></li>
+            </ul>
+        </li>
+
+  		</ul>
+{% endif %}
+
+	</div>
+{% if request.user.is_superuser %}
+	{% block body %}
+	{% endblock %}
+{% else %}
+        <div style="width: 500px;margin: 100px auto;text-align: center;padding: 100px 100px;">
+          <h1>Access Denied..</h1>
+          <a href="{% url 'm_lst_hme' %}" class="btn btn-danger btn-rounded">Home</a></div>
+        {% endif %}
+
+</body>
+</html>
