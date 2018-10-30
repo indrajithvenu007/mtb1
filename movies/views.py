@@ -34,6 +34,7 @@ class MovieListHome(ListView):
 	queryset=MovieModel.objects.filter(m_status=1)
 	def get_context_data(self, *args, **kwargs):
 		context = super(MovieListHome, self).get_context_data(*args, **kwargs)
+		context['movies']=MovieModel.objects.filter(m_status=1)
 		context['screen_names'] = ScreenModel.objects.filter(sc_status=1)	
 		context['carousal']=CarousalModel.objects.filter(sc_status=1)
 		return context

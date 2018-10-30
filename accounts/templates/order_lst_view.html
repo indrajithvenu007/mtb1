@@ -24,7 +24,7 @@
 		<th>Booked date</th>
 	</tr>
 	{% for i in o_list %}
-		{% ifequal request.user.username i.user_data %}
+		<!-- {% ifequal request.user.username i.user_data %} -->
 		<tr>
 			<td>{{i.user_data}}</td>
 			<td>{{i.movie}}</td>
@@ -37,7 +37,7 @@
 			<td>{{i.create_date}}</td>
 			
 		</tr>
-		{% endifequal %}
+		<!-- {% endifequal %} -->
 	
 	{% endfor %}
 	</table>

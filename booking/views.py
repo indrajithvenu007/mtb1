@@ -6,7 +6,7 @@ from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.views.generic import ListView,TemplateView
 from booking.forms import SelectedSeatForm
-from movies.models import ShowModel,ScreenModel
+from movies.models import ShowModel,ScreenModel,MovieModel
 from booking.models import ReservationModel
 from django.conf import settings
 
@@ -22,6 +22,11 @@ class BookingAdd(TemplateView):
 	def get(self,request,pk):
 		s_id=pk
 		show_details=ShowModel.objects.get(id=s_id)
+		movie=show_details.movie
+		movie_details=MovieModel.objects.get(m_name=movie)
+		poster=movie_details.m_poster
+		date=show_details.s_date
+		time=show_details.s_time
 		screen=show_details.screen
 		screen_details=ScreenModel.objects.get(sc_name=screen)
 		silver_price=screen_details.silver_price
@@ -31,7 +36,11 @@ class BookingAdd(TemplateView):
 		platinum_seats=screen_details.platinum_seats
 		form=SelectedSeatForm
 		context = {'show_details':show_details,
+		'movie':movie,
+		'poster':poster,
 		'screen':screen,
+		'date':date,
+		'time':time,
 		'silver_price':silver_price,
 		'gold_price':gold_price,
 		'platinum_price':platinum_price,
@@ -56,6 +65,8 @@ class BookingAdd(TemplateView):
 		s_price=screen_details.silver_price
 		g_price=screen_details.gold_price
 		p_price=screen_details.platinum_price
+		movie_details=MovieModel.objects.get(m_name=movie)
+		poster=movie_details.m_poster
 
 
 		if request.POST:
@@ -100,6 +111,7 @@ class BookingAdd(TemplateView):
 					'time':time,
 					'tot':tot,
 					's_seats_available':s_seats_available,
+					'poster':poster
 				
 					}
 
@@ -123,4 +135,5 @@ def payment(request):
 class OrderListView(ListView):
 	template_name='order_lst_view.html'
 	model=ReservationModel
+	queryset=ReservationModel.objects.order_by('-create_date')
 	context_object_name ='o_list'

@@ -222,24 +222,33 @@ body{
 				{% else %}
 				<li class="active"><a href="{% url 'm_lst_hme' %}">Home</a></li>
 				{% endif %}
-				<div class="dropdown">
-      				<li class="active"><a href="#" class=" dropdown-toggle" >Movies</a></li>
-      				<div class="dropdown-content">
-      					{% for i in object_list %}
-    					<a href="{% url 'm_d_view' i.id %}">{{i}}</a>
-      					{% endfor %}
-  					</div>
-
-      			</div>
-      			<div class="dropdown">
-      				<li><a href="#">Screens</a></li>
-      				<div class="dropdown-content">
-      					{% for i in screen_names %}
-    					<a href="#">{{i}}</a>
-      					{% endfor %}
-  					</div>
-
-      			</div>
+			
+                <span class="log">
+                    <div class="dropdown">
+                        <li class="btn" type="button" data-toggle="dropdown">Movies</li>
+                        
+                            <div class="dropdown-content">
+                                <div class="dropdown-content">
+                                    {% for i in movies %}
+                                        <a href="{% url 'm_d_view' i.id %}">{{i}}</a>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                    </div>
+                </span>  
+                <span class="log">
+                    <div class="dropdown">
+                        <li class="btn dropdown-toggle" type="button" data-toggle="dropdown">Screens</li>
+                        
+                            <div class="dropdown-content">
+                                <div class="dropdown-content">
+                                    {% for i in screen_names %}
+                                     <a href="#">{{i}}</a>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                    </div>
+                </span>  
       			{% if not request.user.is_authenticated %}
       			<li ><a href="{% url 'login' %}"><i class="glyphicon glyphicon-log-in">&nbspLogin</i></a></li>
       			<li><a href="{% url 'user_add' %}">SignUp</a></li>
@@ -265,16 +274,6 @@ body{
 	{% block body %}
 	{% endblock %}
 </div>
-<!-- <footer class="container-fluid text-center bg-lightgray" style="background-color: #ccc ;padding: 5px 0px;">
-
-        <div class="copyrights" >
-            <p>MTB © 2016, All Rights Reserved
-                <br>
-                <span>Web Design By: Indrajith Venu</span></p>
-            <p><a href="#" target="_blank">Linkedin <i class="fa fa-linkedin-square" aria-hidden="true"></i> </a></p>
-        </div>
-</footer>
- -->
 <footer id="myFooter">
         <div class="container">
             <div class="row">

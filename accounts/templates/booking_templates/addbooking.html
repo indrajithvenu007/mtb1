@@ -1,30 +1,50 @@
 {% extends 'base.html' %}
 {% block head %}
+<style type="text/css">
+	.lh{
+		  color: white;
+  text-shadow:
+   -1px -1px 0 #000,  
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+     2px 2px 0 #000;
+
+		line-height: 55px;
+	}
+	.lh1{
+		font-size: 15px;
+		line-height: 20px;
+	}
+	.selectticket{
+		margin-top: 100px;
+	}
+</style>
 
 {% endblock %}
 {% block body %}
 			<div class='container'>
 				<div id="myDIV">
-				<div style="border-style: dotted;width: 500px;text-align: center; background-image: radial-gradient(circle, #e0e1e3, #d3d7d9, #c6cdcc, #bcc2be, #b5b7b0);margin-top: 25px;float: right;">
-					<div>
-	  					<h3>Click Proceed to confirm tickets..</h3>
-	  					<h4>Movie  : {{ movie }}</h4>
-	  					<h4>screen : {{ screen }}</h4>
-	  					<h4>date n time : {{ date }} | {{time}}</h4>
-	  					<h4>Ticket Class | Number of seats : {{ ticket_class }} | {{seats}}</h4>
-	  					<h4>---------------------------------------------------------------</h4>
-	  					<h4>Payable amount  : {{ tot }} /-</h4>
-	  					<h4></h4>
-	  					<a href="{% url 'pay_page' %}"><button type="button" class="btn btn-danger" >Proceed to pay</button></a>
-			  		</div>
+					<div style="border-style:double;width: 450px;text-align: center;background-image: url('{{poster.url}}');background-repeat: no-repeat;background-size: 500px 515px;margin-top: 25px;float: right;line-height: 75px; margin-bottom: 20px;border-width:1.992px;border-radius:7.5px;">
+						<div style="background-color: rgba( 86,101,115,.6);margin-top: -20px;width: 100%;height:100%;">
 
+		  					<h3 class="lh">Click Proceed to confirm tickets..</h3>
+		  					<h4 class="lh">Movie  : {{ movie }}</h4>
+		  					<h4 class="lh">screen : {{ screen }}</h4>
+		  					<h4 class="lh">date n time : {{ date }} | {{time}}</h4>
+		  					<h4 class="lh">Ticket Class | Number of seats : {{ ticket_class }} | {{seats}}</h4>
+		  					<h4>---------------------------------------------------------------</h4>
+		  					<h4 class="lh">Payable amount  : &#8377; {{ tot }} /-</h4>
+		  					<h4></h4>
+		  					<a href="{% url 'pay_page' %}"><button type="button" class="btn btn-danger" >Proceed to pay</button></a>
+				  		</div>
 					</div>
-				
-					<div >
-						<h3>Choose the Ticket Class and number of seats..</h3>
-						<h5>Price Per Silver Ticket : {{silver_price}}</h5>
-						<h5>Price Per Gold Ticket : {{gold_price}}</h5>
-						<h5>Price Per Platinum Ticket : {{platinum_price}}</h5>
+				</div>
+					
+					<div  class="selectticket">
+						<h3 >Choose the Ticket Class and number of seats..</h3>
+						<h5 class="lh1">Price Per Silver Ticket : <b>&#8377; {{silver_price}}/-</b></h5>
+						<h5 class="lh1">Price Per Gold Ticket : <b>&#8377; {{gold_price}}/-</b></h5>
+						<h5 class="lh1">Price Per Platinum Ticket :<b>&#8377; {{platinum_price}}/-</b></h5>
 					</div>
 					<form method="post" action="." enctype="multipart/form-data">
 						{% csrf_token %}
