@@ -22,7 +22,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '9w$tvmfipb*w#$#xxx3729$ynk+^(ny#oa8*3ml1y!f8dz5tvr'
 GOOGLE_RECAPTCHA_SECRET_KEY = '6LcOFXcUAAAAAJQHs3TTosN_zPoZToeV5IpBbjxY'
-
+SOCIAL_AUTH_TWITTER_KEY='mEgt3EEt7rfdT2GPMAq9xmCu4'
+SOCIAL_AUTH_TWITTER_SECRET ='khCzNbh3yRxzSZmUrtfo0abD4m5h2WOODIXRevJrJa1BPid50u'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -144,5 +145,3 @@ LOGIN_URL = 'login'
 if DEBUG:
     STRIPE_PUBLISHABLE_KEY='pk_test_KAzAYeFkuQ7MdsYmDJOHK8c5'
     STRIPE_SECRET_KEY='sk_test_YL8oR9eXjQj657LkTDay7lwX'
-SOCIAL_AUTH_GITHUB_KEY = '10d891e58a89e4c93407'
-SOCIAL_AUTH_GITHUB_SECRET = '77a7e886f427f787404404f06aeb30a8e61850f2'

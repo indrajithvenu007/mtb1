@@ -39,7 +39,10 @@
 </div>
 <div id='g-recaptcha-error'></div>
               <button type="submit" class="btn btn-primary">Login</button> 
-              <h6>New User?</h6><a href="{% url 'user_add' %}"><button>Signup</button></a>
+              <h6>New User?</h6>
+<!-- <a href="{% url 'social:begin' 'twitter' %}">Login with Twitter</a> -->
+              
+              <a href="{% url 'user_add' %}"><button>Signup</button></a>
 
         </form>
  		</div> 

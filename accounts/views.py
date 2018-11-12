@@ -56,7 +56,7 @@ class UserAdd(FormView):
 		cust_obj = cust_form.save(commit=False)
 		cust_obj.user_data = self.object
 		cust_obj.save()
-		return redirect('/home/')
+		return redirect('/')
 
 	def form_invalid(self, user_form, cust_form):
 		return self.render_to_response(self.get_context_data(form1=user_form,form2=cust_form))
@@ -72,9 +72,9 @@ def login(request):
      form =AuthenticationForm()
      if request.user.is_authenticated():
          if request.user.is_superuser:
-             return redirect("/home/")# or your url name
+             return redirect("/")# or your url name
          if request.user.is_staff:
-             return redirect("/home/")# or your url name
+             return redirect("/")# or your url name
 
 
      if request.method == 'POST':
@@ -86,9 +86,9 @@ def login(request):
              # correct username and password login the user
              auth.login(request, user)
              if request.user.is_superuser:
-                 return redirect("/home/")# or your url name
+                 return redirect("/")# or your url name
              if request.user.is_staff:
-                 return redirect("/home")# or your url name
+                 return redirect("/")# or your url name
 
          else:
              print 'Error wrong username/password'

@@ -21,7 +21,7 @@ from movies.views import CarousalAdd,CarousalListView,UpdateCarousal
 
 urlpatterns = [
 
-url(r'^home/',MovieListHome.as_view(),name='m_lst_hme'),
+url(r'^$',MovieListHome.as_view(),name='m_lst_hme'),
 
 url(r'^m_add/',MovieAdd.as_view(), name='movies_add'),
 url(r'^mlstview/',MovieListView.as_view(),name='m_lstview'),

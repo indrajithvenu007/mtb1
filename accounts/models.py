@@ -15,7 +15,7 @@ STATUS = ((INACTIVE, 'Inactive'),(ACTIVE, 'Active'))
 
 class Customer(models.Model):
      user_data = models.OneToOneField(User)
-     u_ph_no = models.IntegerField()
+     u_ph_no = models.IntegerField(verbose_name='mobile number:')
      create_date=models.DateTimeField(auto_now=True)
 
      def __str__(self):
